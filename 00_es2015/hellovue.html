@@ -7,14 +7,27 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
-    <div id="app">{{message}}</div>
+    <!--상태관리-->
+    <div id="app">
+      {{message}}
+      <button @click="message+=1">increase</button>
+      {{myNum}}
+      <button @click="myNum.num++">increase</button>
+    </div>
   </body>
   <script>
-    const { createApp, ref } = Vue;
+    const { createApp, ref, reactive } = Vue;
     createApp({
       setup() {
-        const message = ref("Hello Vue!!");
+        const message = ref(1); // 모든 타입
+        const myNum = reactive({ num: 1 }); // 객체 타입
+        console.log(message);
+        console.log(myNum);
+
+        console.log(message.value); // .value를 붙여라!! 이걸 붙이고 ref를 써라!!
+        console.log(myNum.num);
         return {
+          myNum,
           message,
         };
       },
