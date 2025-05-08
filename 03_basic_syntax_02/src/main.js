@@ -1,0 +1,18 @@
+// import './assets/main.css'
+
+import { createApp } from 'vue'
+//import App from './App.vue'
+import App from './book/01_computed.vue'
+//import App from './book/02_conditional_rendering.vue'
+//import App from './book/03_list_rendering.vue'
+//import App from './book/04_vfor_with_key.vue'
+//import App from './book/05_vfor_with_vif.vue'
+//import App from './book/06_watch.vue'
+//import App from './book/07_lifecycle_hooks.vue'
+//import App from './example/ex_01_computed.vue'
+//import App from './example/ex_02_vshow.vue'
+//import App from './example/ex_03_vfor.vue'
+//import App from './example/ex_04_watch.vue'
+//import App from './example/ex_05_lifecycle.vue'
+//import App from './example/ex_06_todos.vue'
+createApp(App).mount('#app')

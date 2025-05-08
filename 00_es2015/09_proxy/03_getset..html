@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="username" />
+    <input type="text" class="username" id="username" />
+  </body>
+  <script>
+    const person = {
+      _firstName: "John", // _firstName은 내부적으로 사용되고 외부에는 firstName에 대한 getter와 setter가 사용된다.
+      lastName: "Doe",
+
+      // TODO: firstName을 요청하면 친애하는 '이름' 형태로 반환하자.
+
+      // END
+
+      // TODO: firstName을 설정하면 화면의 모든 .username field의 값을 동일하게 설정하자.
+
+      // END
+
+      // TODO: fullName에 대한 getter를 작성하자. _firstName과 lastName을 결합해서 반환한다.
+
+      //END
+
+      // TODO: fullName에 대한 setter를 작성해보자. fullname은 공백(" ")이 구분자로 2단어가 들어온다.
+
+      // END
+    };
+
+    document.querySelector("#username").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        person.firstName = e.target.value;
+      }
+    });
+
+    person.firstName = "GilDong";
+    console.log(person.firstName);
+
+    // getter를 사용하여 속성 값에 접근
+    console.log(person.fullName); // 출력: John Doe
+    console.log(person);
+    // setter를 사용하여 속성 값 할당
+    person.fullName = "Gilsan Jang";
+    console.log(person.firstName); // 출력: Jane
+    console.log(person.lastName); // 출력: Smith
+  </script>
+</html>
