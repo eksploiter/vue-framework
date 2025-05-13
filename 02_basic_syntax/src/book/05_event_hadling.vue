@@ -24,21 +24,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-const count = ref(0)
-const name = ref('Alice')
+import { ref } from 'vue';
+const count = ref(0);
+const name = ref('Alice');
 const myFunc = function (event) {
-  console.log(event)
-  console.log(event.currentTarget)
-  console.log(`Hello ${name.value}!`)
-}
+  console.log(event);
+  console.log(event.currentTarget);
+  console.log(`Hello ${name.value}!`);
+};
 const greeting = function (message) {
-  console.log(message)
-}
+  console.log(message);
+};
 const warning = function (message, event) {
-  console.log(message)
-  console.log(event)
-}
+  console.log(message);
+  console.log(event);
+};
 </script>
 
 <style lang="scss" scoped></style>
