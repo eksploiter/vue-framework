@@ -1,25 +1,28 @@
 <script setup>
-import { reactive, watch } from 'vue'
-const depts = reactive([{ deptno: 10, dname: '개발1팀', loc: '서울' }])
-const props = defineProps(['dept'])
+import { watch } from 'vue'
+const props = defineProps(['dept', 'depts'])
 // 부모와 자식 간의 관계, props와 defineProps에 대해 더 자세히 공부
 // 이것의 변화가 생겼을 때 watcher를 사용한다. computed와 watcher의 차이점도 잘 알아두자
-const emit = defineEmits(['changeMode'])
+const emit = defineEmits(['changeMode', 'updateDept'])
 const pick = (index) => {
-  emit('changeMode', { mode: 'detail', data: depts[index] })
+  emit('changeMode', { mode: 'detail', data: props.depts[index] })
 }
 const changeForm = () => {
   emit('changeMode', { mode: 'register' })
 }
+// watch(props.dept, (newVal, oldVal) => {
+//   console.log(`watch props.dept ${oldVal} -> ${newVal}`)
+//   const idx = props.depts.findIndex((d) => d.deptno == newVal.deptno)
+//   if (idx == -1) {
+//     props.depts.push({ ...newVal })
+//   } else {
+//     props.depts[idx].dname = newVal.dname
+//     props.depts[idx].loc = newVal.loc
+//   }
+// })
 watch(props.dept, (newVal, oldVal) => {
   console.log(`watch props.dept ${oldVal} -> ${newVal}`)
-  const idx = depts.findIndex((d) => d.deptno == newVal.deptno)
-  if (idx == -1) {
-    depts.push({ ...newVal })
-  } else {
-    depts[idx].dname = newVal.dname
-    depts[idx].loc = newVal.loc
-  }
+  emit('updateDept', newVal) // 변경 알림만 보냄
 })
 </script>
 
@@ -39,11 +42,11 @@ watch(props.dept, (newVal, oldVal) => {
           </tr>
         </thead>
         <tbody>
-          <tr v-if="depts.length == 0">
+          <tr v-if="props.depts.length == 0">
             <td colspan="4">등록된 사용자 정보가 없습니다.</td>
           </tr>
           <template v-else>
-            <tr v-for="(dept, index) in depts" :key="dept.deptno" @click="pick(index)">
+            <tr v-for="(dept, index) in props.depts" :key="dept.deptno" @click="pick(index)">
               <td>{{ index + 1 }}</td>
               <td>{{ dept.deptno }}</td>
               <td>{{ dept.dname }}</td>
