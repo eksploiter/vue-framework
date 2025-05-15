@@ -22,14 +22,19 @@ const num1 = 100
 const num2 = ref(200)
 const num3 = ref(100)
 // TODO: 01. num1과 num2, num3를 provide 해보자.
-
+provide('num1', num1)
+provide('num2', num2)
+provide('num3', num3)
 // END
 
 // TODO: 04. num3를 readonly로 감싸서 readonlyNum으로 제공해보자.
-
+provide('readonlyNum', readonly(num3))
 const even = ref(2)
 // TODO: 06. even을 provide 하면서 변경 규칙(짝수인 경우만 효용)을 전달하자.
-
+provide('even', {
+  even,
+  notifyFunction: (newValue) => (even.value = newValue % 2 == 0 ? newValue : even.value),
+})
 // END
 </script>
 
