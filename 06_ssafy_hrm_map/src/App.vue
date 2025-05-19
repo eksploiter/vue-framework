@@ -1,6 +1,4 @@
 <template>
-  <ExtraLibraryTestVue />
-  <hr />
   <AppHeader />
   <hr />
   <LoginForm />
@@ -14,6 +12,8 @@
   <MemberList />
   <hr />
   <CommonError status="404" />
+  <hr />
+  <ExtraLibraryTestVue />
   <hr />
   <AppFooter />
 </template>
